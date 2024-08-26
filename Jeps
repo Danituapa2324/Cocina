@@ -1,0 +1,166 @@
+
+
+*HTML (index.html)*
+```
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Venta de Productos</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header>
+		<h1>Venta de Productos</h1>
+	</header>
+	<main>
+		<section class="productos">
+			<h2>Productos</h2>
+			<div class="producto" id="producto-1">
+				<img src="imagen1.jpg" alt="Producto 1">
+				<h3>Producto 1</h3>
+				<p>Precio: $100</p>
+				<button class="agregar-carrito">Agregar al carrito</button>
+			</div>
+			<div class="producto" id="producto-2">
+				<img src="imagen2.jpg" alt="Producto 2">
+				<h3>Producto 2</h3>
+				<p>Precio: $200</p>
+				<button class="agregar-carrito">Agregar al carrito</button>
+			</div>
+			<!-- Agrega más productos aquí -->
+		</section>
+		<section class="carrito">
+			<h2>Carrito</h2>
+			<ul id="lista-carrito"></ul>
+			<p>Total: $0</p>
+			<button id="comprar">Comprar</button>
+		</section>
+	</main>
+	<script src="script.js"></script>
+</body>
+</html>
+```
+
+*CSS (styles.css)*
+```
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 1em;
+	text-align: center;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2em;
+}
+
+.productos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.producto {
+	margin: 1em;
+	padding: 1em;
+	border: 1px solid #ddd;
+	border-radius: 0.5em;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.producto img {
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 0.5em 0.5em 0 0;
+}
+
+.producto h3 {
+	margin-top: 0;
+}
+
+.agregar-carrito {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 0.5em 1em;
+	border: none;
+	border-radius: 0.5em;
+	cursor: pointer;
+}
+
+.agregar-carrito:hover {
+	background-color: #3e8e41;
+}
+
+.carrito {
+	margin-top: 2em;
+}
+
+#lista-carrito {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#lista-carrito li {
+	margin-bottom: 0.5em;
+}
+
+#comprar {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 0.5em 1em;
+	border: none;
+	border-radius: 0.5em;
+	cursor: pointer;
+}
+
+#comprar:hover {
+	background-color: #3e8e41;
+}
+```
+
+*JavaScript (script.js)*
+```
+const productos = [
+	{ id: 1, nombre: "Producto 1", precio: 100 },
+	{ id: 2, nombre: "Producto 2", precio: 200 },
+	// Agrega más productos aquí
+];
+
+const carrito = [];
+
+document.querySelectorAll(".agregar-carrito").forEach((boton) => {
+	boton.addEventListener("click", (e) => {
+		const productoId = e.target.closest(".producto").id;
+		const producto = productos.find((p) => (link unavailable) === parseInt(productoId));
+		carrito.push(producto);
+		actualizarCarrito();
+	});
+});
+
+function actualizarCarrito() {
+	const listaCarrito = document.getElementById("lista-carrito");
+	listaCarrito.innerHTML = "";
+	carrito.forEach((producto) => {
+		const elemento = document.createElement("li");
+		elemento.textContent = `${producto.nombre} - $${producto.precio}`;
+		listaCarrito.appendChild(elemento);
+	});
+	const total = carrito.reduce((acc, producto) => acc + producto.precio, 0);
+	document.querySelector("p.total").textContent = `Total: $${total}`;
+}
+
+document.getElementById("
+`
